@@ -24,11 +24,14 @@ class CalculateViewController: UIViewController {
     @IBOutlet var randomCalculateButton: UIButton!
     @IBOutlet var calculateResultButton: UIButton!
     
+    var isPrivacyButtonActive = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelText()
         setImageView()
         setTextField()
+        setPrivacybutton()
         setRandomCalculateButton()
         setCalculateResultButton()
     }
@@ -64,6 +67,31 @@ extension CalculateViewController {
         weighView.layer.borderWidth = 1
         weighView.layer.borderColor = UIColor.black.cgColor
         weighView.layer.cornerRadius = 15
+    }
+    
+    @IBAction func privacyButtonClicked() {
+        isPrivacyButtonActive.toggle()
+        setPrivacybutton()
+    }
+    
+    func setPrivacybutton() {
+        if isPrivacyButtonActive {
+            weightPrivacyButton.tintColor = .point1
+            weightPrivacyButton.backgroundColor = .point2
+            weightPrivacyButton.setImage(.hideIcon, for: .normal)
+        } else {
+            weightPrivacyButton.tintColor = .point2
+            weightPrivacyButton.backgroundColor = .point1
+            weightPrivacyButton.setImage(.openIcon, for: .normal)
+        }
+        
+        weightPrivacyButton.imageEdgeInsets.left = 5
+        weightPrivacyButton.imageEdgeInsets.right = 5
+        weightPrivacyButton.imageEdgeInsets.bottom = 5
+        weightPrivacyButton.imageEdgeInsets.top = 5
+        weightPrivacyButton.frame.size = CGSize(width: 34, height: 34)
+        weightPrivacyButton.contentMode = .scaleAspectFit
+        weightPrivacyButton.layer.cornerRadius = 10
     }
     
     func setTextField() {
