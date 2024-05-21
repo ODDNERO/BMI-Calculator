@@ -17,11 +17,11 @@ class CalculateViewController: UIViewController {
     @IBOutlet var heightTextField: UITextField!
     
     @IBOutlet var weightQuestionLabel: UILabel!
-    @IBOutlet var weighView: UIView!
-    @IBOutlet var weighTextField: UITextField!
+    @IBOutlet var weightView: UIView!
+    @IBOutlet var weightTextField: UITextField!
     @IBOutlet var weightPrivacyButton: UIButton!
     
-    @IBOutlet var randomCalculateButton: UIButton!
+    @IBOutlet var randomInputButton: UIButton!
     @IBOutlet var calculateResultButton: UIButton!
     
     var isPrivacyButtonActive = true
@@ -63,10 +63,10 @@ extension CalculateViewController {
         heightView.layer.borderColor = UIColor.black.cgColor
         heightView.layer.cornerRadius = 15
         
-        weighView.frame.size.height = 52
-        weighView.layer.borderWidth = 1
-        weighView.layer.borderColor = UIColor.black.cgColor
-        weighView.layer.cornerRadius = 15
+        weightView.frame.size.height = 52
+        weightView.layer.borderWidth = 1
+        weightView.layer.borderColor = UIColor.black.cgColor
+        weightView.layer.cornerRadius = 15
     }
     
     @IBAction func privacyButtonClicked() {
@@ -95,7 +95,7 @@ extension CalculateViewController {
     }
     
     func setTextField() {
-        for textField in [heightTextField, weighTextField] {
+        for textField in [heightTextField, weightTextField] {
             textField!.backgroundColor = .clear
             textField!.borderStyle = .none
             textField!.textColor = .black
@@ -105,15 +105,15 @@ extension CalculateViewController {
     }
     
     func setRandomCalculateButton() {
-        randomCalculateButton.setImage(.init(systemName: "arrow.2.circlepath.circle"), for: .normal)
-        randomCalculateButton.tintColor = .point3
-        randomCalculateButton.imageEdgeInsets.right = 7
+        randomInputButton.setImage(.init(systemName: "arrow.2.circlepath.circle"), for: .normal)
+        randomInputButton.tintColor = .point3
+        randomInputButton.imageEdgeInsets.right = 7
         
-        randomCalculateButton.setTitle("랜덤으로 BMI 계산하기", for: .normal)
-        randomCalculateButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
-        randomCalculateButton.titleLabel?.textAlignment = .right
-        randomCalculateButton.setTitleColor(.point3, for: .normal)
-        randomCalculateButton.setTitleColor(.point1, for: .highlighted)
+        randomInputButton.setTitle("랜덤으로 BMI 입력하기", for: .normal)
+        randomInputButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
+        randomInputButton.titleLabel?.textAlignment = .right
+        randomInputButton.setTitleColor(.point3, for: .normal)
+        randomInputButton.setTitleColor(.point1, for: .highlighted)
     }
     
     func setCalculateResultButton() {

@@ -108,11 +108,11 @@
                         <outlet property="heightQuestionLabel" destination="Xp4-hd-OWa" id="mmv-hq-Gpb"/>
                         <outlet property="heightTextField" destination="s0K-ES-AjE" id="kKU-7l-LzN"/>
                         <outlet property="heightView" destination="1JH-Y5-lDI" id="ycI-hq-Hwe"/>
-                        <outlet property="randomCalculateButton" destination="9QJ-16-x4b" id="O2E-co-eMh"/>
-                        <outlet property="weighTextField" destination="gKL-3z-Avm" id="NSl-iZ-kHs"/>
-                        <outlet property="weighView" destination="Hxe-Pp-eVk" id="LOb-kR-Kpi"/>
+                        <outlet property="randomInputButton" destination="9QJ-16-x4b" id="O2E-co-eMh"/>
                         <outlet property="weightPrivacyButton" destination="r0C-dd-bem" id="gKG-Ii-XrF"/>
                         <outlet property="weightQuestionLabel" destination="TaX-bf-VoV" id="LVr-Sz-2yI"/>
+                        <outlet property="weightTextField" destination="gKL-3z-Avm" id="NSl-iZ-kHs"/>
+                        <outlet property="weightView" destination="Hxe-Pp-eVk" id="LOb-kR-Kpi"/>
                         <outlet property="womanImageView" destination="Xd2-yz-TCH" id="Gda-Hk-096"/>
                     </connections>
                 </viewController>
