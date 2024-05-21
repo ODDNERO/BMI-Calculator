@@ -125,3 +125,35 @@ extension CalculateViewController {
         calculateResultButton.layer.cornerRadius = 13
     }
 }
+
+// MARK: - Logic
+extension CalculateViewController {
+    
+    @IBAction func resultButtonClicked(_ sender: UIButton) {
+        checkInputNotEmpty()
+    }
+    
+    func checkInputNotEmpty() {
+        let (inputHeight, inputWeight) = (heightTextField.text, weightTextField.text)
+        
+        guard let inputHeight, !inputHeight.isEmpty,
+              let inputWeight, !inputWeight.isEmpty else {
+            if inputHeight!.isEmpty, inputWeight!.isEmpty {
+                heightTextField.placeholder = "❗️  키를 입력해 주세요."
+                weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+            } else if inputHeight!.isEmpty {
+                heightTextField.placeholder = "❗️  키를 입력해 주세요."
+            } else if inputWeight!.isEmpty {
+                weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+            }
+            return
+        }
+    }
+    
+    @IBAction func heightEditigChanged(_ sender: UITextField) {
+        heightTextField.placeholder = ""
+    }
+    @IBAction func weightEditingChanged(_ sender: UITextField) {
+        weightTextField.placeholder = ""
+    }
+}
