@@ -95,6 +95,9 @@ extension CalculateViewController {
     }
     
     func setTextField() {
+        heightTextField.placeholder = "cm"
+        weightTextField.placeholder = "kg"
+        
         for textField in [heightTextField, weightTextField] {
             textField!.backgroundColor = .clear
             textField!.borderStyle = .none
@@ -130,30 +133,29 @@ extension CalculateViewController {
 extension CalculateViewController {
     
     @IBAction func resultButtonClicked(_ sender: UIButton) {
-        checkInputNotEmpty()
+        checkInputNotEmpty(height: heightTextField.text, weight: weightTextField.text)
     }
     
-    func checkInputNotEmpty() {
-        let (inputHeight, inputWeight) = (heightTextField.text, weightTextField.text)
+    func checkInputNotEmpty(height: String?, weight: String?) {
+        guard let height, let weight else { return }
         
-        guard let inputHeight, !inputHeight.isEmpty,
-              let inputWeight, !inputWeight.isEmpty else {
-            if inputHeight!.isEmpty, inputWeight!.isEmpty {
-                heightTextField.placeholder = "❗️  키를 입력해 주세요."
-                weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
-            } else if inputHeight!.isEmpty {
-                heightTextField.placeholder = "❗️  키를 입력해 주세요."
-            } else if inputWeight!.isEmpty {
-                weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
-            }
+        switch (height.isEmpty, weight.isEmpty) {
+        case (true, true):
+            heightTextField.placeholder = "❗️  키를 입력해 주세요."
+            weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+        case (true, false):
+            heightTextField.placeholder = "❗️  키를 입력해 주세요."
+        case (false, true):
+            weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+        case (false, false):
             return
         }
     }
     
     @IBAction func heightEditigChanged(_ sender: UITextField) {
-        heightTextField.placeholder = ""
+        heightTextField.placeholder = "cm"
     }
     @IBAction func weightEditingChanged(_ sender: UITextField) {
-        weightTextField.placeholder = ""
+        weightTextField.placeholder = "kg"
     }
 }
