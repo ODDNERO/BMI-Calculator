@@ -69,11 +69,6 @@ extension CalculateViewController {
         weightView.layer.cornerRadius = 15
     }
     
-    @IBAction func privacyButtonClicked() {
-        isPrivacyButtonActive.toggle()
-        setPrivacybutton()
-    }
-    
     func setPrivacybutton() {
         if isPrivacyButtonActive {
             weightPrivacyButton.tintColor = .point1
@@ -97,6 +92,7 @@ extension CalculateViewController {
     func setTextField() {
         heightTextField.placeholder = "cm"
         weightTextField.placeholder = "kg"
+        weightTextField.isSecureTextEntry = true
         
         for textField in [heightTextField, weightTextField] {
             textField!.backgroundColor = .clear
@@ -157,5 +153,11 @@ extension CalculateViewController {
     }
     @IBAction func weightEditingChanged(_ sender: UITextField) {
         weightTextField.placeholder = "kg"
+    }
+    
+    @IBAction func privacyButtonClicked() {
+        isPrivacyButtonActive.toggle()
+        setPrivacybutton()
+        weightTextField.isSecureTextEntry.toggle()
     }
 }
