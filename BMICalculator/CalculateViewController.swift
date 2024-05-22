@@ -108,7 +108,7 @@ extension CalculateViewController {
         randomInputButton.tintColor = .point3
         randomInputButton.imageEdgeInsets.right = 7
         
-        randomInputButton.setTitle("랜덤으로 BMI 입력하기", for: .normal)
+        randomInputButton.setTitle("랜덤으로 입력하기", for: .normal)
         randomInputButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
         randomInputButton.titleLabel?.textAlignment = .right
         randomInputButton.setTitleColor(.point3, for: .normal)
@@ -159,5 +159,14 @@ extension CalculateViewController {
         isPrivacyButtonActive.toggle()
         setPrivacybutton()
         weightTextField.isSecureTextEntry.toggle()
+    }
+    
+    @IBAction func randomInputButtonClicked() {
+        heightTextField.text = "\(Int.random(in: 140...200))"
+        weightTextField.text = "\(Int.random(in: 40...100))"
+        
+        isPrivacyButtonActive = false
+        setPrivacybutton()
+        weightTextField.isSecureTextEntry = false
     }
 }
