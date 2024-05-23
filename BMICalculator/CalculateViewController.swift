@@ -127,24 +127,52 @@ extension CalculateViewController {
 
 // MARK: - Logic
 extension CalculateViewController {
-    
     @IBAction func resultButtonClicked(_ sender: UIButton) {
-        checkInputNotEmpty(height: heightTextField.text, weight: weightTextField.text)
+        let (inputHeight, inputWeight) = (heightTextField.text, weightTextField.text)
+        guard !isInputEmpty(height: inputHeight, weight: inputWeight) else { return }
+        guard isInputInt(height: inputHeight!, weight: inputWeight!) else { return }
     }
     
-    func checkInputNotEmpty(height: String?, weight: String?) {
-        guard let height, let weight else { return }
+    func isInputEmpty(height: String?, weight: String?) -> Bool {
+        guard let height, let weight else { return true }
         
         switch (height.isEmpty, weight.isEmpty) {
         case (true, true):
             heightTextField.placeholder = "❗️  키를 입력해 주세요."
             weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+            return true
         case (true, false):
             heightTextField.placeholder = "❗️  키를 입력해 주세요."
+            return true
         case (false, true):
             weightTextField.placeholder = "❗️  몸무게를 입력해 주세요."
+            return true
         case (false, false):
-            return
+            return false
+        }
+    }
+    
+    func isInputInt(height: String, weight: String) -> Bool {
+        let isHeightInt = Int(height) != nil
+        let isWeightInt = Int(weight) != nil
+        
+        switch (isHeightInt, isWeightInt) {
+        case (true, true):
+            return true
+        case (false, true):
+            heightTextField.text = nil
+            heightTextField.placeholder = "❗️  숫자만 입력해 주세요."
+            return false
+        case (true, false):
+            weightTextField.text = nil
+            weightTextField.placeholder = "❗️  숫자만 입력해 주세요."
+            return false
+        case (false, false):
+            heightTextField.text = nil
+            weightTextField.text = nil
+            heightTextField.placeholder = "❗️  숫자만 입력해 주세요."
+            weightTextField.placeholder = "❗️  숫자만 입력해 주세요."
+            return false
         }
     }
     
