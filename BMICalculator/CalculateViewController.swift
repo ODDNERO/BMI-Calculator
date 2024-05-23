@@ -101,6 +101,7 @@ extension CalculateViewController {
             textField!.textColor = .black
             textField!.tintColor = .black
             textField!.font = .systemFont(ofSize: 15)
+            textField!.keyboardType = .numberPad
         }
     }
     
@@ -212,6 +213,10 @@ extension CalculateViewController {
     }
     @IBAction func weightEditingChanged(_ sender: UITextField) {
         weightTextField.placeholder = "kg"
+    }
+    
+    @IBAction func keyboardDismiss(_ sender: Any) {
+        view.endEditing(true)
     }
     
     @IBAction func privacyButtonClicked() {

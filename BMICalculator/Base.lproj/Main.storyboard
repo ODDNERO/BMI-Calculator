@@ -67,6 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <connections>
+                                    <action selector="keyboardDismiss:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DHG-0D-iJY"/>
                                     <action selector="resultButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0y4-qG-p3c"/>
                                 </connections>
                             </button>
@@ -112,6 +113,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="98Z-zu-qRv" appends="YES" id="4fW-Yb-H0l"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="calculateResultButton" destination="TdD-Vz-dpm" id="iHR-Vz-2o3"/>
@@ -129,6 +134,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="98Z-zu-qRv">
+                    <connections>
+                        <action selector="keyboardDismiss:" destination="BYZ-38-t0r" id="0nP-lN-Xt9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="63.358778625954194" y="-34.507042253521128"/>
         </scene>
