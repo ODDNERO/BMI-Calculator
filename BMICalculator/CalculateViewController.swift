@@ -25,7 +25,8 @@ class CalculateViewController: UIViewController {
     @IBOutlet var calculateResultButton: UIButton!
     
     var isPrivacyButtonActive = true
-    
+    var BMIScope: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelText()
@@ -131,6 +132,8 @@ extension CalculateViewController {
         let (inputHeight, inputWeight) = (heightTextField.text, weightTextField.text)
         guard !isInputEmpty(height: inputHeight, weight: inputWeight) else { return }
         guard isInputInt(height: inputHeight!, weight: inputWeight!) else { return }
+        
+        let bmi = calculateBMI(height: Int(inputHeight!)!, weight: Int(inputWeight!)!)
     }
     
     func isInputEmpty(height: String?, weight: String?) -> Bool {
@@ -174,6 +177,25 @@ extension CalculateViewController {
             weightTextField.placeholder = "❗️  숫자만 입력해 주세요."
             return false
         }
+    }
+    
+    func calculateBMI(height: Int, weight: Int) -> Double {
+        let height = Double(height) * 0.01
+        let bmi = Double(weight) / (height * height)
+        
+        switch bmi {
+            case ..<18.5:
+                BMIScope = "저체중"
+            case 18.6..<23:
+                BMIScope = "정상 체중"
+            case 23..<25:
+                BMIScope = "과체중"
+            case 25...:
+                BMIScope = "비만"
+            default:
+                BMIScope = "오류"
+        }
+        return Double(String(format: "%.1f", bmi))!
     }
     
     @IBAction func heightEditigChanged(_ sender: UITextField) {
