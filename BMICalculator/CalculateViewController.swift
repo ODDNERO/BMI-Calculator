@@ -133,7 +133,8 @@ extension CalculateViewController {
         guard !isInputEmpty(height: inputHeight, weight: inputWeight) else { return }
         guard isInputInt(height: inputHeight!, weight: inputWeight!) else { return }
         
-        let bmi = calculateBMI(height: Int(inputHeight!)!, weight: Int(inputWeight!)!)
+        let BMI = calculateBMI(height: Int(inputHeight!)!, weight: Int(inputWeight!)!)
+        presentAlert(title: "\n\(BMI)", message: "\n\(BMIScope!)입니다\n")
     }
     
     func isInputEmpty(height: String?, weight: String?) -> Bool {
@@ -181,9 +182,9 @@ extension CalculateViewController {
     
     func calculateBMI(height: Int, weight: Int) -> Double {
         let height = Double(height) * 0.01
-        let bmi = Double(weight) / (height * height)
+        let BMI = Double(weight) / (height * height)
         
-        switch bmi {
+        switch BMI {
             case ..<18.5:
                 BMIScope = "저체중"
             case 18.6..<23:
@@ -195,7 +196,15 @@ extension CalculateViewController {
             default:
                 BMIScope = "오류"
         }
-        return Double(String(format: "%.1f", bmi))!
+        return Double(String(format: "%.1f", BMI))!
+    }
+    
+    func presentAlert(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let close = UIAlertAction(title: "닫기", style: .cancel)
+
+        alert.addAction(close)
+        present(alert, animated: true)
     }
     
     @IBAction func heightEditigChanged(_ sender: UITextField) {
